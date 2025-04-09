@@ -33,7 +33,7 @@ public class MistralService {
 
         List<Message> lstMessages = new ArrayList<>(); //en liste af messages med roller
         lstMessages.add(new Message("system", "You are a helpful assistant. Assisting in making playlist for the user, knowing that i like future chief keef and Drakeo the ruler"));
-        lstMessages.add(new Message("user", "Give a list of three good rappers"));
+        lstMessages.add(new Message("user", "Give a list of 5 songs which you would recommend"));
         requestDTO.setMessages(lstMessages);
 
         ResponseDTO response = webClient.post()
