@@ -19,6 +19,23 @@
     <div class="card m-3">
         <div class="card-body">
             <h5 class="card-title">Get songs</h5>
+            <form id="form-songs" class="container">
+                <div class="row">
+                    <p class="card-text">Requst the API for songs by inputting three of your favorite artists</p>
+                    <label for="artists">Artists for inspiration</label> <input type="text" id="artists" class="result"
+                                                            placeholder="Enter artists for for inspiration for your playlist">
+                </div>
+                <div class="row mt-3">
+                    <div class="column text-end">
+                        <button type="submit" class="btn btn-primary" id="btn-get-joke">Get playlist</button>
+                    </div>
+                </div>
+                <div id="spinner1" class="spinner-border text-success" role="status"
+                     style="margin-left:1em;border-radius: 50%;display:none;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p id="result" class="result"></p>
+            </form>
         </div>
 </div>
 </body>
