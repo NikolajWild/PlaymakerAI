@@ -9,7 +9,6 @@ Playmaker is a simple web application that helps users generate a custom playlis
 - Input up to three of your favorite artists
 - Receive a curated list of recommended songs
 - Lightweight, fast, and easy to use
-- Built using HTML, Bootstrap 5, and JavaScript
 
 ---
 
