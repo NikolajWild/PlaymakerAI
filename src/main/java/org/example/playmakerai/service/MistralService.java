@@ -37,7 +37,7 @@ public class MistralService {
         List<Message> lstMessages = new ArrayList<>();
         lstMessages.add(new Message("system", "You are a helpful playlist maker. The user will provide an artist and a song name. " +
                 "Your task is to generate a playlist with exactly 10 songs that match the style of the user's input. " +
-                "The playlist should be similar in genre, vibe, or mood. " +
+                "The playlist should be similar in genre, vibe, language or mood. " +
                 "Respond with a numbered list of exactly 10 songs, including both the artist and song title for each item."));
         lstMessages.add(new Message("user", userPrompt));
         requestDTO.setMessages(lstMessages);
