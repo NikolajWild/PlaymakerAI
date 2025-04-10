@@ -95,7 +95,6 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 80px; /* Space for audio player */
 }
 
 header {
@@ -364,122 +363,7 @@ header {
     font-size: 14px;
 }
 
-/* Audio Player */
-#audio-player {
-    position: fixed;
-    bottom: 0;
-    left: 230px;
-    right: 0;
-    height: 80px;
-    background-color: #181818;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    border-top: 1px solid #282828;
-    z-index: 100;
-    transform: translateY(80px);
-    transition: transform 0.3s ease;
-}
-
-#audio-player.visible {
-    transform: translateY(0);
-}
-
-#player-info {
-    display: flex;
-    align-items: center;
-    width: 30%;
-    min-width: 180px;
-}
-
-.now-playing-img {
-    width: 48px;
-    height: 48px;
-    margin-right: 12px;
-    overflow: hidden;
-    border-radius: 4px;
-}
-
-.now-playing-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.now-playing-details {
-    overflow: hidden;
-}
-
-.now-playing-title {
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.now-playing-artist {
-    font-size: 12px;
-    color: var(--spotify-subtext);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.player-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-}
-
-.player-btn {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-bottom: 8px;
-}
-
-.progress-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 4px;
-    background-color: #5a5a5a;
-    border-radius: 2px;
-    position: relative;
-    cursor: pointer;
-}
-
-.progress {
-    height: 100%;
-    background-color: var(--spotify-green);
-    border-radius: 2px;
-    width: 0;
-}
-
-.time-display {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--spotify-subtext);
-    margin-top: 4px;
-}
-
-/* Playlist items with play preview */
+/* Playlist items */
 .playlist-item {
     display: flex;
     align-items: center;
@@ -505,26 +389,13 @@ header {
     flex: 1;
 }
 
-.play-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--spotify-text);
-    border: 1px solid var(--spotify-subtext);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.2s ease;
-}
-
-.playlist-item:hover .play-btn {
-    opacity: 1;
-    background: var(--spotify-green);
-    border-color: var(--spotify-green);
-    color: #000;
+footer {
+    padding: 16px 32px;
+    text-align: center;
+    color: var(--spotify-subtext);
+    font-size: 12px;
+    background-color: var(--spotify-black);
+    margin-top: auto;
 }
 
 /* Responsive Styles */
@@ -560,29 +431,8 @@ header {
         padding: 24px 16px;
     }
 
-    #audio-player {
-        left: 0;
-        flex-direction: column;
-        height: auto;
-        padding: 12px;
-    }
-
-    #player-info {
-        width: 100%;
-        margin-bottom: 12px;
-    }
-
     .artists-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 16px;
     }
-}
-
-footer {
-    padding: 16px 32px;
-    text-align: center;
-    color: var(--spotify-subtext);
-    font-size: 12px;
-    background-color: var(--spotify-black);
-    margin-top: auto;
 }
