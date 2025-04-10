@@ -15,11 +15,12 @@ Playmaker is a simple web application that helps users generate a custom playlis
 
 ## 📦 Tech Stack
 
-- **JAVA**
-- **SPRING BOOT**
+- **Java**
+- **Spring Boot**
 - **JavaScript (Vanilla)**
 - **CSS3 / Bootstrap 5**
-- **MISTRAL API/LAST.FM API**
+- **Mistral API**
+- **LastFM API**
 
 
 ---
