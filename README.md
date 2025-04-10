@@ -1,6 +1,6 @@
 # 🎵 Playmaker Demo
 
-Playmaker is a simple web application that helps users generate a custom playlist based on their favorite artists. By entering three artists, the app connects to a music recommendation API (or demo logic) to suggest songs that match the user's taste.
+Playmaker is a simple web application that helps users generate a custom playlist based on their favorite artists. By entering three artists, the app connects to a music recommendation API to suggest songs that match the user's taste.
 
 ---
 
