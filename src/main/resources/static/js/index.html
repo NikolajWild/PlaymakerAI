@@ -2,41 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Playmaker Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playmaker AI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="main.js"></script>
 </head>
 
 <body>
-<div class="container"> <h2> Playmaker Demo</h2>
-    <p> This application will try and make a playlist with the user, from three artist and three songs the user likes</p>
-</div>
-    <div class="card m-3">
-        <div class="card-body">
-            <h5 class="card-title">Get songs</h5>
-            <form id="form-songs" class="container">
-                <div class="row">
-                    <p class="card-text">Requst the API for songs by inputting three of your favorite artists</p>
-                    <label for="artists">Artists for inspiration</label> <input type="text" id="artists" class="result"
-                                                            placeholder="Enter artists for for inspiration for your playlist">
+<div class="app-container">
+    <nav class="sidebar">
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 167.5 167.5">
+                <path fill="#1DB954" d="M83.7 0C37.5 0 0 37.5 0 83.7c0 46.3 37.5 83.7 83.7 83.7 46.3 0 83.7-37.5 83.7-83.7S130 0 83.7 0zM122 120.8c-1.4 2.5-4.6 3.2-7 1.7-19.8-12-44.5-14.7-73.7-8-2.8.5-5.6-1.2-6.2-4-.5-2.8 1.3-5.6 4-6.2 32-7.3 59.6-4.2 81.6 9.3 2.6 1.5 3.4 4.7 1.8 7.2zM132.5 98c-2 3-6 4-9 2.2-22.5-14-56.8-18-83.4-9.8-3.5 1-7-1-8-4.3-1-3.5 1-7 4.6-8 30.4-9 68.2-4.5 94 11.2 3 1.8 4 6 1.8 9zM133.5 74.3c-26.8-16-71.3-17.5-97-9.7-4 1.3-8.3-1-9.6-5.2-1.4-4 1-8.5 5-9.8 29.6-9 78.8-7.2 109.8 11.2 3.7 2.2 5 7 2.7 10.7-2 3.8-7 5-11 2.8z"></path>
+            </svg>
+            <h1>Playmaker</h1>
+        </div>
+
+        <ul class="nav-links">
+            <li class="nav-item" data-page="playlists"><i class="fas fa-headphones"></i> Generate Playlist</li>
+            <li class="nav-item" data-page="explore"><i class="fas fa-compass"></i> Explore</li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <!-- Home Page -->
+        <div class="page active" id="home-page">
+            <div class="playlist-generator">
+                <h2>Create Your AI Playlist</h2>
+                <p>Enter your favorite artists and let our AI create a personalized playlist just for you</p>
+
+                <form id="form-songs" class="playlist-form">
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <input type="text" id="artists" placeholder="Enter artists for inspiration (e.g., Daft Punk, The Weeknd, Tame Impala)">
+                    </div>
+
+                    <button type="submit" class="generate-btn">
+                        <span>Generate Playlist</span>
+                        <div id="spinner1" class="spinner">
+                            <div class="spinner-inner"></div>
+                        </div>
+                    </button>
+                </form>
+
+                <div class="results-container">
+                    <div id="result" class="playlist-results"></div>
                 </div>
-                <div class="row mt-3">
-                    <div class="column text-end">
-                        <button type="submit" class="btn btn-primary" id="btn-get-joke">Get playlist</button>
+            </div>
+        </div>
+
+        <!-- Explore Page -->
+        <div class="page" id="explore-page">
+            <div class="explore-container">
+                <h2>Explore Top Artists</h2>
+                <p>Discover the most popular artists right now</p>
+
+                <div class="spinner-container">
+                    <div id="explore-spinner" class="spinner-large">
+                        <div class="spinner-inner"></div>
                     </div>
                 </div>
-                <div id="spinner1" class="spinner-border text-success" role="status"
-                     style="margin-left:1em;border-radius: 50%;display:none;">
-                    <span class="visually-hidden">Loading...</span>
+
+                <div class="artists-grid" id="top-artists-grid">
+                    <!-- Top artists will be loaded here -->
                 </div>
-                <p id="result" class="result"></p>
-            </form>
+            </div>
         </div>
+
+        <!-- Playlists Page (Placeholder) -->
+        <div class="page" id="playlists-page">
+            <div class="placeholder-content">
+                <h2>Your Playlists</h2>
+                <p>Your saved playlists will appear here</p>
+                <div class="empty-state">
+                    <i class="fas fa-headphones-alt"></i>
+                    <p>No playlists yet</p>
+                    <button class="action-btn" onclick="navigateToPage('home')">Create a Playlist</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liked Songs Page (Placeholder) -->
+        <div class="page" id="liked-page">
+            <div class="placeholder-content">
+                <h2>Liked Songs</h2>
+                <p>Your liked songs will appear here</p>
+                <div class="empty-state">
+                    <i class="fas fa-heart"></i>
+                    <p>No liked songs yet</p>
+                    <button class="action-btn" onclick="navigateToPage('explore')">Discover Music</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Playmaker AI - Powered by Mistral AI & Last.fm</p>
+        </footer>
+
+        <!-- Audio Player (Hidden) -->
+        <div id="audio-player">
+            <div id="player-info">
+                <div class="now-playing-img">
+                    <img src="/api/placeholder/48/48" alt="Playing" id="player-img">
+                </div>
+                <div class="now-playing-details">
+                    <div id="player-title" class="now-playing-title">Not Playing</div>
+                    <div id="player-artist" class="now-playing-artist"></div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button id="player-toggle" class="player-btn"><i class="fas fa-play"></i></button>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar">
+                        <div id="progress" class="progress"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-element"></audio>
+        </div>
+    </main>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>
